@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head') %>
+  <body>
+    <div class="container d-flex flex-column">
+      <div class="row align-items-center justify-content-center g-0 min-vh-100">
+        <div class="py-8 col-12 col-md-8 col-lg-6 col-xxl-4 py-xl-0">
+          <!-- Card -->
+          <div class="card smooth-shadow-md">
+            <!-- Card body -->
+            <div class="p-6 card-body">
+              <div class="mb-4 text-center">
+                <a href="#" class="text-black text-decoration-none important"
+                  ><img
+                    src="../../images/logo.png"
+                    class="mb-2"
+                    alt=""
+                    width="70px"
+                  />
+                  <span class="text-black fs-3 text-decoration-none"
+                    >GAME RPS</span
+                  ></a
+                >
+                <!-- <p class="mb-6">Please Login To C.</p> -->
+              </div>
+              <!-- Form -->
+              <% if(uniqueCode){ %>
+              <div class="alert alert-success" role="alert">
+                Kode Room Game Anda :
+                <span class="alert-link size"><%= uniqueCode %></span>
+              </div>
+              <% } %>
+              <form action="/room" method="POST">
+                <!-- Username -->
+                <div class="mb-3">
+                  <label for="email" class="form-label">Room Name</label>
+                  <input
+                    type="text"
+                    id="email"
+                    class="form-control"
+                    name="nama_room"
+                    placeholder="Enter room name"
+                    required=""
+                  />
+                </div>
+                <div>
+                  <!-- Button -->
+                  <div class="d-grid">
+                    <input
+                      type="submit"
+                      class="btn btn-primary"
+                      value="Create Room"
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- Libs JS -->
+    <!-- <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/libs/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="../assets/libs/feather-icons/dist/feather.min.js"></script>
+    <script src="../assets/libs/prismjs/components/prism-core.min.js"></script>
+    <script src="../assets/libs/prismjs/components/prism-markup.min.js"></script>
+    <script src="../assets/libs/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="../assets/libs/dropzone/dist/min/dropzone.min.js"></script> -->
+
+    <!-- clipboard -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script> -->
+
+    <!-- Theme JS -->
+    <!-- <script src="../assets/js/theme.min.js"></script> -->
+  </body>
+</html>

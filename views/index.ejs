@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link href="/stylesheets/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+  </head>
+  <body>
+    <nav
+      class="
+        navbar navbar-expand-md navbar-light
+        fixed-top
+        bg-custom
+        navbar-game
+      "
+    >
+      <div class="container">
+        <a class="mr-5 navbar-brand" href="#" data-aos="fade-down">LOGO</a>
+        <button
+          class="text-white navbar-dark navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="mr-auto navbar-nav text-uppercase">
+            <li
+              class="nav-item active"
+              data-aos="fade-down"
+              data-aos-delay="50"
+            >
+              <a class="nav-link" href="#"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item" data-aos="fade-down" data-aos-delay="100">
+              <a class="nav-link" href="#">work</a>
+            </li>
+            <li class="nav-item" data-aos="fade-down" data-aos-delay="150">
+              <a class="nav-link" href="#">contact</a>
+            </li>
+            <li class="nav-item" data-aos="fade-down" data-aos-delay="200">
+              <a class="nav-link" href="#">About me</a>
+            </li>
+          </ul>
+          <ul
+            class="navbar-nav text-uppercase"
+            data-aos="fade-down"
+            data-aos-delay="250"
+          >
+            <li class="nav-item">
+              <a class="nav-link" href="/register">sign up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="bg-image">
+      <div class="container">
+        <div class="row align-items-center vh-100">
+          <div
+            class="
+              text-center text-white
+              col-12
+              justify-content-center
+              align-items-center
+            "
+          >
+            <h1 class="text-uppercase" data-aos="zoom-in" data-aos-delay="300">
+              Play traditional game
+            </h1>
+            <h3 data-aos="zoom-in" data-aos-delay="350">
+              Experience new traditional game play
+            </h3>
+            <a
+              href="/login"
+              class="btn btn-play"
+              data-aos="zoom-in"
+              data-aos-delay="400"
+              >PLAY NOW</a
+            >
+          </div>
+          <div class="text-center">
+            <a href="#games" class="text-center btn-story">
+              <img
+                src="/images/assets/scrolldownbutton.svg"
+                class="mb-5"
+                alt="The Story"
+                data-aos="fade-down"
+                data-aos-delay="400"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="the-games-bg" id="games">
+      <div class="container">
+        <div class="align-content-center row vh-100">
+          <div class="text-white col-12 col-md-4">
+            <h3 data-aos="fade-right" data-aos-delay="100">
+              What's so special?
+            </h3>
+            <h1 data-aos="fade-right" data-aos-delay="200">The Games</h1>
+          </div>
+          <div
+            class="col-12 col-md-8"
+            data-aos="fade-left"
+            data-aos-delay="350"
+          >
+            <div
+              id="carouselExampleIndicators"
+              class="mt-5 carousel slide"
+              data-ride="carousel"
+            >
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="1"
+                ></li>
+                <li
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="2"
+                ></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    src="/images/assets/rockpaperstrategy-1600.jpg"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="/images/assets/rockpaperstrategy-1600.jpg"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="/images/assets/rockpaperstrategy-1600.jpg"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                </div>
+              </div>
+              <a
+                class="carousel-control-prev"
+                href="#carouselExampleIndicators"
+                role="button"
+                data-slide="prev"
+              >
+                <img src="/images/assets/switch-left.svg" alt="" />
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#carouselExampleIndicators"
+                role="button"
+                data-slide="next"
+              >
+                <img src="/images/assets/switch-right.svg" alt="" />
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features-bg">
+      <div class="container">
+        <div class="row justify-content-end align-content-center vh-100">
+          <div class="text-white col-12 col-sm-7 col-md-5">
+            <h3 class="" data-aos="fade-left" data-aos-delay="100">
+              What’s so special?
+            </h3>
+            <h1
+              class="text-uppercase"
+              data-aos="fade-left"
+              data-aos-delay="200"
+            >
+              features
+            </h1>
+            <div class="mt-5">
+              <ul>
+                <li data-aos="fade-left" data-aos-delay="300">
+                  TRADITIONAL GAMES
+                </li>
+                <p data-aos="fade-left" data-aos-delay="400">
+                  If you miss your childhood, we provide many traditional games
+                  here
+                </p>
+                <li data-aos="fade-left" data-aos-delay="500">GAMES SUIT</li>
+                <li data-aos="fade-left" data-aos-delay="600">TBD</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="system-bg">
+      <div class="container">
+        <div class="row vh-100 align-content-center justify-content-start">
+          <div class="col-12">
+            <p
+              class="text-center text-white"
+              data-aos="fade-down"
+              data-aos-delay="200"
+            >
+              Can My Computer Run this game?
+            </p>
+          </div>
+          <div class="text-white col-12 col-md-6">
+            <h1
+              class="text-white text-uppercase text-system"
+              data-aos="zoom-in"
+              data-aos-delay="100"
+            >
+              system <br />
+              requirements
+            </h1>
+            <div class="table-responsive">
+              <table class="table text-white">
+                <tr>
+                  <td data-aos="fade-left" data-aos-delay="200">
+                    <h1>OS:</h1>
+                    <h3>Windows 7 64-bit only (No OSX support at this time)</h3>
+                  </td>
+                  <td data-aos="fade-left" data-aos-delay="300">
+                    <h1>PROCESSOR:</h1>
+                    <h3>
+                      Intel Core 2 Duo @ 2.4 GHZ or AMD Athlon X2 @ 2.8 GHZ
+                    </h3>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-aos="fade-left" data-aos-delay="400">
+                    <h1>MEMORY:</h1>
+                    <h3>4 GB RAM</h3>
+                  </td>
+                  <td data-aos="fade-left" data-aos-delay="500">
+                    <h1>STORAGE:</h1>
+                    <h3>8 GB available space</h3>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" data-aos="fade-left" data-aos-delay="600">
+                    <h1>GRAPHICS:</h1>
+                    <h3>
+                      NVIDIA GeForce GTX 660 2GB or AMD Radeon HD 7850 2GB
+                      DirectX11 (Shader Model 5)
+                    </h3>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="topscore-bg">
+      <div class="container vh-100">
+        <div class="text-white row">
+          <div class="col-md-6 col-12 align-self-center">
+            <h1
+              class="text-uppercase text-system"
+              data-aos="zoom-in"
+              data-aos-delay="100"
+            >
+              TOP SCORES
+            </h1>
+            <h3 data-aos="zoom-in" data-aos-delay="200">
+              This top score from various games provided <br />
+              on this platform
+            </h3>
+            <button
+              class="btn btn-more"
+              data-aos="zoom-in"
+              data-aos-delay="300"
+            >
+              See More
+            </button>
+          </div>
+          <div class="col-md-6 col-12 align-self-center">
+            <div
+              class="row justify-content-end"
+              data-aos="fade-right"
+              data-aos-delay="400"
+            >
+              <div class="mt-2 col-md-11 col-12 d-inline-block">
+                <div class="square-review d-block">
+                  <div class="profile-review">
+                    <img src="/images/assets/review-1.jpg" alt="" />
+
+                    <div class="text-profile">
+                      <img
+                        src="/images/assets/twitter.svg"
+                        class="position-absolute twitter"
+                        alt=""
+                      />
+                      <h2 class="title">Evan Lahti</h2>
+                      <p class="subtitle">PC Gamer</p>
+                    </div>
+                  </div>
+                  <p class="quote">
+                    “One of my gaming highlights of the year.”
+                  </p>
+                  <p class="date">October 18, 2018</p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="row justify-content-start"
+              data-aos="fade-right"
+              data-aos-delay="500"
+            >
+              <div class="mt-2 col-md-11 col-12 d-inline-block">
+                <div class="square-review d-block">
+                  <div class="profile-review">
+                    <div class="img-score">
+                      <img src="/images/assets/review-2.jpg" alt="" />
+                    </div>
+
+                    <div class="text-profile">
+                      <img
+                        src="/images/assets/twitter.svg"
+                        class="position-absolute twitter"
+                        alt=""
+                      />
+                      <h2 class="title">Jada Griffin</h2>
+                      <p class="subtitle">Nerdreactor</p>
+                    </div>
+                  </div>
+                  <p class="quote">
+                    “The next big thing in the world of streaming and survival
+                    games.”
+                  </p>
+                  <p class="date">December 21, 2018</p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="row justify-content-end"
+              data-aos="fade-right"
+              data-aos-delay="600"
+            >
+              <div class="mt-2 col-md-11 col-12 d-inline-block">
+                <div class="square-review d-block">
+                  <div class="profile-review">
+                    <img src="/images/assets/review-3.jpg" alt="" />
+
+                    <div class="text-profile">
+                      <img
+                        src="/images/assets/twitter.svg"
+                        class="position-absolute twitter"
+                        alt=""
+                      />
+                      <h2 class="title">Aaron Williams</h2>
+                      <p class="subtitle">Uproxx</p>
+                    </div>
+                  </div>
+                  <p class="quote">
+                    “Snoop Dogg Playing The Wildly Entertaining ‘SOS’ Is
+                    Ridiculous.”
+                  </p>
+                  <p class="date">December 24, 2018</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="newsteller-bg">
+      <div class="container">
+        <div class="row vh-100">
+          <div class="col-md-5 col-12 align-self-center">
+            <!-- <div class="col-md-5 col-12 align-self-center img-news"> -->
+            <img
+              src="/images/assets/newsteller.png"
+              class=""
+              alt=""
+              data-aos="zoom-in"
+              data-aos-delay="100"
+            />
+          </div>
+          <div class="col-md-7 col-12 align-self-center">
+            <div class="text-white text-news">
+              <h3 data-aos="fade-up" data-aos-delay="200">
+                Want to stay in <br />
+                touch?
+              </h3>
+              <h1
+                class="text-uppercase"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
+                newsletter SUBSCRIBE
+              </h1>
+              <p data-aos="fade-right" data-aos-delay="300">
+                In order to start receiving our news, all you have to do is
+                enter your email address. Everything else will be taken care of
+                by us. We will send you emails containing information about
+                game. We don’t spam.
+              </p>
+            </div>
+            <div class="email-subs" data-aos="zoom-in" data-aos-delay="400">
+              <form>
+                <div class="form-row align-items-center">
+                  <div class="col-auto form-group">
+                    <label for="inlineFormInput">Your email address</label>
+                    <input
+                      type="text"
+                      class="mb-2 form-control"
+                      id="inlineFormInput"
+                      placeholder="Your email address"
+                      value="youremail@binar.co.id"
+                    />
+                  </div>
+
+                  <div class="col-auto">
+                    <button type="submit" class="mb-2 btn">
+                      Subscribe now
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+        <div
+          class="
+            flex-wrap
+            text-white
+            d-flex
+            justify-content-end
+            bd-highlight
+            text-uppercase
+            link-footer
+          "
+        >
+          <div
+            class="p-2 f-text align-self-center"
+            data-aos="fade-down"
+            data-aos-delay="100"
+          >
+            Main
+          </div>
+          <div
+            class="p-2 f-text align-self-center"
+            data-aos="fade-down"
+            data-aos-delay="200"
+          >
+            About
+          </div>
+          <div
+            class="p-2 f-text align-self-center"
+            data-aos="fade-down"
+            data-aos-delay="300"
+          >
+            Game Features
+          </div>
+          <div
+            class="p-2 f-text align-self-center"
+            data-aos="fade-down"
+            data-aos-delay="400"
+          >
+            System requirements
+          </div>
+          <div
+            class="p-2 f-text align-self-center"
+            data-aos="fade-down"
+            data-aos-delay="500"
+          >
+            quotes
+          </div>
+          <div class="ml-3 d-flex">
+            <div
+              class="p-2 f-icon align-self-center"
+              data-aos="fade-down"
+              data-aos-delay="600"
+            >
+              <img src="/images/assets/facebook.svg" alt="" width="10px" />
+            </div>
+            <div
+              class="p-2 f-icon align-self-center"
+              data-aos="fade-down"
+              data-aos-delay="700"
+            >
+              <img
+                src="/images/assets/twitter1.svg"
+                width="20px"
+                style="color: #fff"
+                alt=""
+              />
+            </div>
+            <div
+              class="p-2 f-icon align-self-center"
+              data-aos="fade-down"
+              data-aos-delay="800"
+            >
+              <img
+                src="/images/assets/youtube.png"
+                style="margin-bottom: -10px"
+                alt=""
+                width="25px"
+              />
+            </div>
+            <div
+              class="p-2 f-icon align-self-center"
+              data-aos="fade-down"
+              data-aos-delay="900"
+            >
+              <img src="/images/assets/twitch.svg" alt="" width="20px" />
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="text-white d-flex justify-content-between">
+          <div class="p-2 copyright">
+            <p class="">© 2018 Your Games, Inc. All Rights Reserved</p>
+          </div>
+
+          <div class="p-2 text-right">
+            <span>Privacy Policy | Terms of Services | Code of Conduct </span>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="/javascripts/bootstrap.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>

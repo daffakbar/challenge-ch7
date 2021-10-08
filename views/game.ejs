@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/stylesheets/game/styles.css" />
+    <link
+      rel="stylesheet"
+      href="http://anijs.github.io/lib/anicollection/anicollection.css"
+    />
+  </head>
+  <body>
+    <div class="back" data-aos="fade-right" data-aos-delay="100">
+      <div class="">
+        <span class="arrow"
+          >< <img src="/images/assets/img/logo.png" alt="logo" width="45px" />
+          <a href="./" style="text-decoration: none"
+            ><span class="text"> ROCK PAPER SCISSORS</span></a
+          >
+        </span>
+      </div>
+    </div>
+    <div class="container game">
+      <div class="mt-4 row justify-content-md-center">
+        <div class="text-center col-md-5 col-5">
+          <h1
+            class="fw-bold text-uppercase"
+            data-aos="fade-down"
+            data-aos-delay="250"
+          >
+            <%= player1.username %>
+          </h1>
+        </div>
+        <div class="col-md-2 col-2"></div>
+        <div class="text-center col-md-5 col-5">
+          <h1
+            class="fw-bold text-uppercase"
+            data-aos="fade-down"
+            data-aos-delay="350"
+          >
+            <%= player2.username %>
+          </h1>
+        </div>
+      </div>
+      <div class="mt-3 text-center row justify-content-md-center">
+        <div class="col-md-5 col-5" id="player">
+          <% for(let i = 0; i < imgGame.length ; i++) { %>
+          <div class="card-rps" data-aos="zoom-in" data-aos-delay="400">
+            <img
+              src="<%= imgGame[i] %> "
+              alt="batu"
+              width="90px"
+              height="90px"
+              class="img-rps"
+              value="batu"
+              data-anijs="if: click, do: zoomIn animated, to: #output"
+            />
+          </div>
+          <% }%>
+          <!-- <div class="card-rps" data-aos="zoom-in" data-aos-delay="500">
+            <img
+              src="/images/assets/img/kertas.png"
+              alt="kertas"
+              width="90px"
+              height="90px"
+              class="img-rps"
+              data-anijs="if: click, do: zoomIn animated, to: #output"
+            />
+          </div>
+          <div class="card-rps" data-aos="zoom-in" data-aos-delay="600">
+            <img
+              src="/images/assets/img/gunting.png"
+              alt="gunting"
+              width="90px"
+              height="90px"
+              class="img-rps"
+              data-anijs="if: click, do: zoomIn animated, to: #output"
+            />
+          </div> -->
+        </div>
+        <div
+          class="mt-3 col-md-2 col-2 align-self-center"
+          id="output"
+          data-aos="zoom-in"
+          data-aos-delay="800"
+        >
+          <div class="vs">
+            <h1>VS</h1>
+          </div>
+          <div class="menang result visually-hidden custom-animation">
+            <h1 class="text-uppercase"><%= player1.username %> WIN</h1>
+          </div>
+          <div class="kalah visually-hidden result custom-animation">
+            <h1 class="text-uppercase"><%= player2.username %> WIN</h1>
+          </div>
+          <div class="seri visually-hidden result custom-animation">
+            <h1>DRAW</h1>
+          </div>
+        </div>
+        <div class="col-md-5 col-5" id="com">
+          <% for(let i = 0; i < imgGame.length ; i++) { %>
+          <div class="card-rps" data-aos="zoom-in" data-aos-delay="500">
+            <img
+              src="<%= imgGame[i] %>"
+              alt=""
+              width="90px"
+              height="90px"
+              class="img-rps"
+            />
+          </div>
+          <% }%>
+          <!-- <div class="card-rps" data-aos="zoom-in" data-aos-delay="500">
+            <img
+              src="/images/assets/img/kertas.png"
+              alt=""
+              width="90px"
+              height="90px"
+              class="img-rps"
+            />
+          </div>
+          <div class="card-rps" data-aos="zoom-in" data-aos-delay="400">
+            <img
+              src="/images/assets/img/gunting.png"
+              alt=""
+              width="90px"
+              height="90px"
+              class="img-rps"
+            />
+          </div> -->
+        </div>
+      </div>
+      <div
+        class="text-center row justify-content-center"
+        data-aos="fade-up"
+        data-aos-delay="700"
+      >
+        <div class="col-12" id="btnReset">
+          <img
+            src="/images/assets/img/refresh.png"
+            alt="refresh"
+            width="75px"
+            height="75px"
+            class="p-3 btn-reset"
+          />
+        </div>
+      </div>
+    </div>
+    <!-- <script src="/javascripts/main.js"></script> -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <!-- <script src="https://cdn.socket.io/4.2.0/socket.io.min.js"></script> -->
+    <script>
+
+      let player = document.querySelectorAll("#player div img"); //get array player
+      let com = document.querySelectorAll("#com div img"); //get array com
+      let output = document.querySelectorAll("#output div"); //get array hasil
+      const btnReset = document.getElementById("btnReset"); //get button reset
+      let action = true;
+      console.log(player);
+      class Game {
+        constructor(player, com) {
+          this.player = player;
+          this.com = com;
+        }
+        start() {
+          console.log(player);
+          if (action) {
+          for (let index = 0; index < player.length; index++) {
+            player[index].addEventListener("click", () => {
+                this.player = index;
+                // this.com = index;
+                player[this.player].classList.toggle("selectedColor");
+                // com[this.com].classList.add("selectedColor");
+                // let result = this.compare();
+                // this.displayOutput(result);
+                // this.reset();
+              });
+            }
+          for (let index = 0; index < com.length; index++) {
+            com[index].addEventListener("click", () => {
+                // this.player = index;
+                this.com = index;
+                com[this.com].classList.toggle("selectedColor");
+                // com[this.com].classList.add("selectedColor");
+                let result = this.compare();
+                this.displayOutput(result);
+
+
+              });
+              // let result = this.compare();
+              // this.displayOutput(result);
+              // this.reset();
+            }
+            this.reset();
+            action = false;
+          } else {
+            alert("Silahkan klik tombol reset");
+          }
+        }
+        iRandom() {
+          return Math.floor(Math.random() * 3);
+        }
+        // 0batu, 1kertas, 2gunting
+        compare() {
+          let result;
+          if (this.player == this.com) {
+            result = "seri";
+          } else {
+            if (this.player == 0) {
+              this.com == 2 ? (result = "menang") : (result = "kalah");
+            } else if (this.player == 1) {
+              this.com == 0 ? (result = "menang") : (result = "kalah");
+            } else if (this.player == 2) {
+              this.com == 1 ? (result = "menang") : (result = "kalah");
+            }
+          }
+          return result;
+        }
+
+        displayOutput(result) {
+
+          if (result === "menang") {
+            var myHeaders = new Headers();
+          myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+          var urlencoded = new URLSearchParams();
+          urlencoded.append("point", "100");
+          urlencoded.append("total_play", "1");
+          urlencoded.append("id_user_game", <%= player1.id %>);
+
+          var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: urlencoded,
+            redirect: 'follow'
+          };
+
+          fetch("http://localhost:3000/room/addhistory", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+          }
+          if (result === "kalah") {
+            var myHeaders = new Headers();
+          myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+          var urlencoded = new URLSearchParams();
+          urlencoded.append("point", "100");
+          urlencoded.append("total_play", "1");
+          urlencoded.append("id_user_game", <%= player2.id %>);
+
+          var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: urlencoded,
+            redirect: 'follow'
+          };
+
+          fetch("http://localhost:3000/room/addhistory", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+          }
+          // alert(result);
+
+          for (let index = 0; index < output.length; index++) {
+            if (output[index].classList.contains(result)) {
+              output[0].classList.add("visually-hidden");
+              output[index].classList.remove("visually-hidden");
+            }
+          }
+        }
+        reset() {
+          btnReset.addEventListener("click", () => {
+            // this.iRandom();
+            player.forEach((element) => {
+              element.classList.remove("selectedColor");
+            });
+            com.forEach((element) => {
+              element.classList.remove("selectedColor");
+            });
+            output.forEach((element) => {
+              element.classList.add("visually-hidden");
+            });
+            output[0].classList.remove("visually-hidden");
+            action = true;
+          });
+        }
+      }
+      let Hasil = new Game();
+      Hasil.start();
+    </script>
+    <script src="https://anijs.github.io/lib/anijs/anijs-min.js"></script>
+    <script src="https://anijs.github.io/lib/anijs/helpers/dom/anijs-helper-dom-min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>
