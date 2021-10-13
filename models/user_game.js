@@ -19,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "id",
         as: "id_user_history",
       });
+      user_game.hasMany(models.master_room, {
+        foreignKey: "id",
+        as: "id_player_1",
+      });
     }
 
     // Method untuk melakukan enkripsi

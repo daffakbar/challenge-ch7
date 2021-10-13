@@ -36,7 +36,15 @@
           </h1>
         </div>
         <div class="col-md-2 col-2"></div>
-        <
+        <div class="text-center col-md-5 col-5">
+          <h1
+            class="fw-bold text-uppercase"
+            data-aos="fade-down"
+            data-aos-delay="350"
+          >
+            <%= player2.username %>
+          </h1>
+        </div>
       </div>
       <div class="mt-3 text-center row justify-content-md-center">
         <div class="col-md-5 col-5" id="player">
@@ -87,11 +95,42 @@
             <h1 class="text-uppercase"><%= player1.username %> WIN</h1>
           </div>
           <div class="kalah visually-hidden result custom-animation">
-            <h1 class="text-uppercase">LOSE</h1>
+            <h1 class="text-uppercase"><%= player2.username %> WIN</h1>
           </div>
           <div class="seri visually-hidden result custom-animation">
             <h1>DRAW</h1>
           </div>
+        </div>
+        <div class="col-md-5 col-5" id="com">
+          <% for(let i = 0; i < imgGame.length ; i++) { %>
+          <div class="card-rps" data-aos="zoom-in" data-aos-delay="500">
+            <img
+              src="<%= imgGame[i] %>"
+              alt=""
+              width="90px"
+              height="90px"
+              class="img-rps"
+            />
+          </div>
+          <% }%>
+          <!-- <div class="card-rps" data-aos="zoom-in" data-aos-delay="500">
+            <img
+              src="/images/assets/img/kertas.png"
+              alt=""
+              width="90px"
+              height="90px"
+              class="img-rps"
+            />
+          </div>
+          <div class="card-rps" data-aos="zoom-in" data-aos-delay="400">
+            <img
+              src="/images/assets/img/gunting.png"
+              alt=""
+              width="90px"
+              height="90px"
+              class="img-rps"
+            />
+          </div> -->
         </div>
       </div>
       <div
@@ -125,8 +164,6 @@
         constructor(player, com) {
           this.player = player;
           this.com = com;
-          console.log(player)
-          console.log(this.player)
         }
         start() {
           console.log(player);
@@ -135,40 +172,28 @@
             player[index].addEventListener("click", () => {
                 this.player = index;
                 // this.com = index;
-                // console.log(this.player)
-                // PICK PLAYER
-                console.log(index)
-
-                var myHeaders = new Headers();
-                myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-
-                var urlencoded = new URLSearchParams();
-                urlencoded.append("room_id", <%= id %>);
-                urlencoded.append("pilihan", index);
-
-                var requestOptions = {
-                  method: 'POST',
-                  headers: myHeaders,
-                  body: urlencoded,
-                  redirect: 'follow'
-                };
-
-                fetch("http://localhost:3000/room/fight", requestOptions)
-                  .then(response => response.text())
-                  .then(result => console.log(result))
-                  .catch(error => console.log('error', error));
-
-
-
                 player[this.player].classList.toggle("selectedColor");
                 // com[this.com].classList.add("selectedColor");
                 // let result = this.compare();
                 // this.displayOutput(result);
                 // this.reset();
               });
-
             }
+          for (let index = 0; index < com.length; index++) {
+            com[index].addEventListener("click", () => {
+                // this.player = index;
+                this.com = index;
+                com[this.com].classList.toggle("selectedColor");
+                // com[this.com].classList.add("selectedColor");
+                let result = this.compare();
+                this.displayOutput(result);
 
+
+              });
+              // let result = this.compare();
+              // this.displayOutput(result);
+              // this.reset();
+            }
             this.reset();
             action = false;
           } else {
@@ -181,7 +206,6 @@
         // 0batu, 1kertas, 2gunting
         compare() {
           let result;
-          console.log(this.player);
           if (this.player == this.com) {
             result = "seri";
           } else {
@@ -219,7 +243,27 @@
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
           }
+          if (result === "kalah") {
+            var myHeaders = new Headers();
+          myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
+          var urlencoded = new URLSearchParams();
+          urlencoded.append("point", "100");
+          urlencoded.append("total_play", "1");
+          urlencoded.append("id_user_game", <%= player2.id %>);
+
+          var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: urlencoded,
+            redirect: 'follow'
+          };
+
+          fetch("http://localhost:3000/room/addhistory", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+          }
           // alert(result);
 
           for (let index = 0; index < output.length; index++) {

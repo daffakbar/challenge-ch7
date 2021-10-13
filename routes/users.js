@@ -8,6 +8,6 @@ router.get("/login", usersController.viewLogin);
 
 // API
 router.post("/register", usersController.register);
-router.post("/login", usersController.logins);
+router.post("/login", usersController.loginLocal);
 
 module.exports = router;

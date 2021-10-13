@@ -78,7 +78,7 @@ module.exports = {
         });
     });
   },
-  login: async (req, res, next) => {
+  loginJWT: async (req, res, next) => {
     const data = await user_game.findOne({
       where: { email: req.body.email },
     });
@@ -96,8 +96,8 @@ module.exports = {
       }
     }
   },
-  logins: passport.authenticate("local", {
-    successRedirect: "/user-admin",
+  loginLocal: passport.authenticate("local", {
+    successRedirect: "/menu",
     failureRedirect: "/login",
     failureFlash: true, // Untuk mengaktifkan express flash
   }),

@@ -7,7 +7,7 @@ const restrict = require("../middleware/restrictpass");
 // Render VIEW
 router.get("/user-admin", restrict, adminController.viewAdmin);
 router.get("/user-admin/:id", restrict, adminController.viewEditBiodata);
-router.get("/user-admin/history/:id", adminController.viewHistory);
+router.get("/user-admin/history/:id", restrict, adminController.viewHistory);
 
 // API
 router.post(
@@ -22,7 +22,11 @@ router.post(
 
   adminController.registerAdmin
 );
-router.post("/user-admin/update", adminController.updateBiodata);
-router.delete("/user-admin/delete/:id/:idx", adminController.removeUser);
+router.post("/user-admin/update", restrict, adminController.updateBiodata);
+router.delete(
+  "/user-admin/delete/:id/:idx",
+  restrict,
+  adminController.removeUser
+);
 
 module.exports = router;

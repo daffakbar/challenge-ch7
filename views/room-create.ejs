@@ -12,7 +12,7 @@
               <div class="mb-4 text-center">
                 <a href="#" class="text-black text-decoration-none important"
                   ><img
-                    src="../../images/logo.png"
+                    src="../../images/assets/img/logo.png"
                     class="mb-2"
                     alt=""
                     width="70px"
@@ -27,7 +27,25 @@
               <% if(uniqueCode){ %>
               <div class="alert alert-success" role="alert">
                 Kode Room Game Anda :
-                <span class="alert-link size"><%= uniqueCode %></span>
+                <input
+                  type="text"
+                  name="text"
+                  value="<%= uniqueCode %>"
+                  id="kode_unik"
+                  hidden
+                />
+                <button
+                  class="size btn btn-outline-success"
+                  onclick="copyCode()"
+                >
+                  <%= uniqueCode %>
+                </button>
+
+                <p class="">
+                  <a href="/room/<%= idRoom %>" class="btn btn-outline-primary"
+                    >Room validation <i class="bi bi-cursor"></i>
+                  </a>
+                </p>
               </div>
               <% } %>
               <form action="/room" method="POST">
@@ -59,7 +77,22 @@
         </div>
       </div>
     </div>
+    <script>
+      function copyCode() {
+        /* Get the text field */
+        var copyText = document.getElementById("kode_unik");
 
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+        /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyText.value);
+
+        /* Alert the copied text */
+        alert("Copied the text: " + copyText.value);
+      }
+    </script>
     <!-- Scripts -->
     <!-- Libs JS -->
     <!-- <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
