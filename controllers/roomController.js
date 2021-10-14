@@ -49,6 +49,18 @@ module.exports = {
         console.log(err);
       });
   },
+  viewRoomValPlayer2: async (req, res, next) => {
+    await master_room
+      .findOne({ where: { id: req.params.id } })
+      .then((result) => {
+        console.log(result);
+        let cekCode = 0;
+        res.render("room-code-2", { id: result.id, cekCode });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
   viewRoomFight: async (req, res, next) => {
     await master_room
       .findOne({ where: { id: req.params.id } })
@@ -60,7 +72,30 @@ module.exports = {
         let player2 = await user_game.findOne({
           where: { id: result.id_player_2 },
         });
-        res.render("game", { id: result.id, imgGame, player1 });
+
+        res.render("game", { id: result.id, imgGame, player1, cekPilihan: 0 });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+  viewRoomFight2: async (req, res, next) => {
+    await master_room
+      .findOne({ where: { id: req.params.id } })
+      .then(async (result) => {
+        console.log(result);
+        let player1 = await user_game.findOne({
+          where: { id: result.id_player_1 },
+        });
+        let player2 = await user_game.findOne({
+          where: { id: result.id_player_2 },
+        });
+        res.render("game-2", {
+          id: result.id,
+          imgGame,
+          player2,
+          cekPilihan: 0,
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -99,19 +134,42 @@ module.exports = {
   roomValidation: async (req, res, next) => {
     await master_room
       .findOne({ where: { id: req.body.id } })
-      .then(async (result) => {
-        master_room.update(
-          {
-            id_player_2: req.user.dataValues.id,
-          },
-          { where: { id: req.body.id } }
-        );
+      .then((result) => {
         let idFight = req.body.id;
         console.log(req.body.kode_unik);
         if (result.kode_unik === req.body.kode_unik) {
           // res.render("game", { imgGame, player1, player2 });
           res.redirect(`/room/fight/${idFight}`);
         } else {
+          console.log("salah");
+        }
+      })
+      .catch((err) => {
+        console.log("salah");
+      });
+  },
+  roomValidationPlayer2: async (req, res, next) => {
+    await master_room
+      .findOne({ where: { id: req.body.id } })
+      .then(async (result) => {
+        let idFight = req.body.id;
+        console.log(req.body.kode_unik);
+        let cekCode = false;
+        if (result.kode_unik === req.body.kode_unik) {
+          master_room.update(
+            {
+              id_player_2: req.user.dataValues.id,
+            },
+            { where: { id: req.body.id } }
+          );
+          // res.render("game", { imgGame, player1, player2 });
+          res.redirect(`/room/fight-2/${idFight}`);
+        } else {
+          cekCode = 1;
+          // res.redirect(400, `/room-2/${idFight}`);
+          // res.alert("Test");
+          res.render("room-code-2", { cekCode, id: req.params.id });
+          // res.render(cekCode);
           console.log("salah");
         }
       })
@@ -135,17 +193,28 @@ module.exports = {
       });
   },
   pickPlayer: async (req, res) => {
-    // console.log(req);
-    await user_in_room
-      .create({
-        room_id: req.body.room_id,
-        pilihan: req.body.pilihan,
-      })
-      .then((result) => {
-        res.status(200);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    let idPlayer = await user_in_room.count({
+      where: { id_player: req.user.dataValues.id },
+    });
+    // .then((result) => {
+    console.log(idPlayer);
+    if (idPlayer < 3) {
+      user_in_room
+        .create({
+          room_id: req.body.room_id,
+          pilihan: req.body.pilihan,
+          id_player: req.body.id_player,
+        })
+        .then((result) => {
+          res.status(200);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      res.render("game-2", { cekPilihan: 1 });
+    }
+    // });
+    // console.log(idPlayer);
   },
 };

@@ -5,8 +5,11 @@
     <div class="container mt-5 d-flex flex-column">
       <div class="row">
         <!-- card -->
-        <% allRoom.map((item)=> { %>
-        <div class="mb-3 col-xl-3 col-lg-6 col-md-4 col-6">
+        <% allRoom.map((item)=> { %> <%= console.log(item.id) %>
+        <div
+          class="mb-3 col-xl-3 col-lg-6 col-md-4 col-6"
+          key="<%= item.kode_unik %>"
+        >
           <div
             class="mb-3 text-white bg-gradient bg-primary rounded-3"
             style="max-width: 18rem"
@@ -30,18 +33,21 @@
                 type="text"
                 name="text"
                 value="<%= item.kode_unik %>"
-                id="kode_unik"
+                id="kode_unik<%= item.kode_unik %>"
                 hidden
               />
 
               <p class="card-text">
                 Salin Kode:
-                <button class="btn-primary rounded-pill" onclick="copyCode()">
+                <button
+                  class="btn-primary rounded-pill"
+                  onClick="{copyCode('<%= item.kode_unik %>')}"
+                >
                   <%= item.kode_unik %>
                 </button>
               </p>
 
-              <a href="/room/<%= item.id %>" class="btn btn-success"
+              <a href="/room-2/<%= item.id %>" class="btn btn-success"
                 >Join Game
               </a>
               <% } %>
@@ -53,18 +59,19 @@
       </div>
     </div>
     <script>
-      function copyCode() {
+      function copyCode(id) {
         /* Get the text field */
-        var copyText = document.getElementById("kode_unik");
+        var copyText = document.getElementById("kode_unik" + id);
 
+        console.log(copyText);
         /* Select the text field */
         copyText.select();
         copyText.setSelectionRange(0, 99999); /* For mobile devices */
 
-        /* Copy the text inside the text field */
+        // /* Copy the text inside the text field */
         navigator.clipboard.writeText(copyText.value);
 
-        /* Alert the copied text */
+        // /* Alert the copied text */
         alert("Copied the text: " + copyText.value);
       }
     </script>

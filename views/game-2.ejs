@@ -32,7 +32,7 @@
             data-aos="fade-down"
             data-aos-delay="250"
           >
-            <%= player1.username %>
+            <%= player2.username %>
           </h1>
         </div>
         <div class="col-md-2 col-2"></div>
@@ -86,7 +86,7 @@
             <h1>VS</h1>
           </div>
           <div class="menang result visually-hidden custom-animation">
-            <h1 class="text-uppercase"><%= player1.username %> WIN</h1>
+            <h1 class="text-uppercase"><%= player2.username %> WIN</h1>
           </div>
           <div class="kalah visually-hidden result custom-animation">
             <h1 class="text-uppercase">LOSE</h1>
@@ -100,6 +100,7 @@
       <!-- close pilihan  -->
       <h1>Giliran Anda HABIS!</h1>
       <% } %>
+
       <div
         class="text-center row justify-content-center"
         data-aos="fade-up"
@@ -151,7 +152,7 @@
                 var urlencoded = new URLSearchParams();
                 urlencoded.append("room_id", <%= id %>);
                 urlencoded.append("pilihan", index);
-                urlencoded.append("id_player",<%= player1.id%>);
+                urlencoded.append("id_player", <%= player2.id %>);
 
                 var requestOptions = {
                   method: 'POST',
@@ -212,7 +213,7 @@
           // var urlencoded = new URLSearchParams();
           // urlencoded.append("point", "100");
           // urlencoded.append("total_play", "1");
-          // urlencoded.append("id_user_game", <%= player1.id %>);
+          // urlencoded.append("id_user_game", );
 
           // var requestOptions = {
           //   method: 'POST',
